@@ -2,7 +2,8 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [reagent "0.7.0"]
-                 [re-frame "0.10.5"]]
+                 [re-frame "0.10.5"]
+                 [com.andrewmcveigh/cljs-time "0.5.2"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]]
 
@@ -12,11 +13,13 @@
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
-  :figwheel {:css-dirs ["resources/public/css"]}
+  :figwheel {:css-dirs ["resources/public/css"]
+             :nrepl-port 7888}
 
   :profiles
   {:dev
-   {:dependencies [[binaryage/devtools "0.9.10"]]
+   {:dependencies [[binaryage/devtools "0.9.10"]
+                   [proto-repl "0.3.1"]]
 
     :plugins      [[lein-figwheel "0.5.16"]]}
    :prod {}}

@@ -1,4 +1,5 @@
 (ns sweaty-timer.db)
 
 (def default-db
-  {:time nil})
+  {:time nil
+   :duration 20})
