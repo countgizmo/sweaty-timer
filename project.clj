@@ -16,10 +16,13 @@
   :figwheel {:css-dirs ["resources/public/css"]
              :nrepl-port 7888}
 
+  :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "0.9.10"]
-                   [proto-repl "0.3.1"]]
+                   [proto-repl "0.3.1"]
+                   [figwheel-sidecar "0.5.9"]
+                   [com.cemerick/piggieback "0.2.1"]]
 
     :plugins      [[lein-figwheel "0.5.16"]]}
    :prod {}}

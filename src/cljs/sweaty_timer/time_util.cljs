@@ -6,8 +6,17 @@
 (def timer-format
   (time-format/formatter "mm:ss"))
 
-(defn time-left-str
+(defn time-diff
   [t1 t2]
-  (->> (- t2 t1)
+  (- t2 t1))
+
+(defn time-diff-str
+  [diff]
+  (->> diff
       (time-coerce/from-long)
       (time-format/unparse timer-format)))
+
+
+(defn time-left-str
+  [t1 t2]
+  (-> (time-diff t1 t2) (time-diff-str)))

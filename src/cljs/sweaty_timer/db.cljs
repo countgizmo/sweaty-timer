@@ -2,4 +2,4 @@
 
 (def default-db
   {:time nil
-   :duration 20})
+   :paused? true})

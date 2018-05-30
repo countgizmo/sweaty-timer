@@ -2,7 +2,7 @@
   (:require [re-frame.core :as re-frame]
             [sweaty-timer.db :as db]
             [cljs-time.core :as time]
-            [sweaty-timer.time-util :refer [time-left-str]]))
+            [sweaty-timer.time-util :refer [time-diff time-diff-str]]))
 
 (re-frame/reg-event-db
   ::initialize-db
@@ -18,12 +18,15 @@
   ::tick
   [(re-frame/inject-cofx :now)]
   (fn [{:keys [db now]} _]
-    (when-let [end (:end db)]
-      {:db (assoc db :diff (time-left-str now end))})))
+    (when (not (:paused db))
+      (when-let [end (:end db)]
+        (let [diff (time-diff now end)
+              paused (<= diff 0)]
+          {:db (assoc db :diff (time-diff-str diff) :paused? paused)})))))
 
 (re-frame/reg-event-fx
   ::start
   [(re-frame/inject-cofx :now)]
-  (fn [{:keys [db now]} _]
-    (let [end (time/plus now (time/minutes (:duration db)))]
+  (fn [{:keys [db now]} [_ duration]]
+    (let [end (time/plus now (time/minutes (int duration)))]
       {:db (assoc db :end end)})))
