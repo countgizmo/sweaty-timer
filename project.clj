@@ -9,21 +9,24 @@
 
   :min-lein-version "2.5.3"
 
-  :source-paths ["src/clj"]
+  :source-paths ["src/clj" "src/cljs"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
   :figwheel {:css-dirs ["resources/public/css"]
              :nrepl-port 7888}
 
-  :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "0.9.10"]
                    [proto-repl "0.3.1"]
                    [figwheel-sidecar "0.5.9"]
-                   [com.cemerick/piggieback "0.2.1"]]
-
+                   [com.cemerick/piggieback "0.2.1"]
+                   [org.clojure/tools.nrepl "0.2.12"]
+                   [org.clojure/tools.namespace "0.2.11"]]
+    :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]
+                   :init-ns user}
+    :source-paths ["dev"]
     :plugins      [[lein-figwheel "0.5.16"]]}
    :prod {}}
 

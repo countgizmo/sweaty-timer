@@ -18,7 +18,7 @@
   ::tick
   [(re-frame/inject-cofx :now)]
   (fn [{:keys [db now]} _]
-    (when (not (:paused db))
+    (when (not (:paused? db))
       (when-let [end (:end db)]
         (let [diff (time-diff now end)
               paused (<= diff 0)]
@@ -29,4 +29,4 @@
   [(re-frame/inject-cofx :now)]
   (fn [{:keys [db now]} [_ duration]]
     (let [end (time/plus now (time/minutes (int duration)))]
-      {:db (assoc db :end end)})))
+      {:db (assoc db :end end :paused? false)})))

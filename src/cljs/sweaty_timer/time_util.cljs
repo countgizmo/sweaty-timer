@@ -16,7 +16,6 @@
       (time-coerce/from-long)
       (time-format/unparse timer-format)))
 
-
 (defn time-left-str
   [t1 t2]
   (-> (time-diff t1 t2) (time-diff-str)))
