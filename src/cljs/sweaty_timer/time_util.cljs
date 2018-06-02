@@ -8,7 +8,9 @@
 
 (defn time-diff
   [t1 t2]
-  (- t2 t1))
+  (if (< t2 t1)
+    0
+    (- t2 t1)))
 
 (defn time-diff-str
   [diff]

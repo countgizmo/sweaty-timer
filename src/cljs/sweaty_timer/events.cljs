@@ -21,7 +21,7 @@
     (when (not (:paused? db))
       (when-let [end (:end db)]
         (let [diff (time-diff now end)
-              paused (<= diff 0)]
+              paused (zero? diff)]
           {:db (assoc db :diff (time-diff-str diff) :paused? paused)})))))
 
 (re-frame/reg-event-fx

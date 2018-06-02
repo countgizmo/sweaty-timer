@@ -20,7 +20,7 @@
   {:dev
    {:dependencies [[binaryage/devtools "0.9.10"]
                    [proto-repl "0.3.1"]
-                   [figwheel-sidecar "0.5.9"]
+                   [figwheel-sidecar "0.5.16"]
                    [com.cemerick/piggieback "0.2.1"]
                    [org.clojure/tools.nrepl "0.2.12"]
                    [org.clojure/tools.namespace "0.2.11"]]
