@@ -5,3 +5,9 @@ body {
 #main-view {
   color: #FF851B;
 }
+
+progress {
+    margin-top: 100px;
+    margin-left: -50px;
+    transform: rotate(270deg);
+}

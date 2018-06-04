@@ -25,7 +25,13 @@
                  :on-change #(reset! time (-> % .-target .-value))}]
         [start @time]])))
 
+(defn progress-bar []
+  (let [p (re-frame/subscribe [::subs/time-diff-percentage])]
+    [:div
+     [:progress {:max 100 :value @p}]]))
+
 (defn main-panel []
-  [:div#main-view "Sweaty Timer is Here!"
+  [:div#main-view
    [clock]
-   [setup-timer-form]])
+   [setup-timer-form]
+   [progress-bar]])

@@ -21,3 +21,13 @@
 (defn time-left-str
   [t1 t2]
   (-> (time-diff t1 t2) (time-diff-str)))
+
+(defn time-left-percent
+  [time total]
+  (int (/ (* 100 time) total)))
+
+(defn seconds-between
+  [t1 t2]
+  (if (<= t1 t2)
+    (time/in-seconds (time/interval t1 t2))
+    0))

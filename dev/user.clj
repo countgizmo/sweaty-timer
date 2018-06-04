@@ -5,4 +5,4 @@
 (defn fig-start []
   (do (ra/start-figwheel!) (ra/cljs-repl)))
 
-(println "hello from the other side")
+(println "Use (fig-start) to start figwheel+cljs repl")
