@@ -2,4 +2,5 @@
 
 (def default-db
   {:time nil
-   :paused? true})
+   :paused? true
+   :active-panel :setup-panel})

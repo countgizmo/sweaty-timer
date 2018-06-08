@@ -30,9 +30,18 @@
                  :paused? paused
                  :seconds-left s-left)})))))
 
+(re-frame/reg-event-db
+  ::set-active-panel
+  (fn [db [_ value]]
+    (assoc db :active-panel value)))
+
 (re-frame/reg-event-fx
   ::start
   [(re-frame/inject-cofx :now)]
   (fn [{:keys [db now]} [_ duration]]
     (let [end (time/plus now (time/minutes (int duration)))]
-      {:db (assoc db :end end :paused? false :duration duration)})))
+      {:db (assoc db
+             :end end
+             :paused? false
+             :duration duration
+             :active-panel :progress-panel)})))

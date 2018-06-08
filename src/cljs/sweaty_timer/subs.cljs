@@ -24,3 +24,8 @@
   ::time-diff-percentage
   (fn [{:keys [seconds-left duration]}]
     (time-left-percent seconds-left (* 60 duration))))
+
+(re-frame/reg-sub
+  ::active-panel
+  (fn [db _]
+    (:active-panel db)))
