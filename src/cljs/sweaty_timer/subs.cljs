@@ -27,5 +27,8 @@
 
 (re-frame/reg-sub
   ::active-panel
-  (fn [db _]
-    (:active-panel db)))
+  (fn [db _] (:active-panel db)))
+
+(re-frame/reg-sub
+  ::active-movement
+  (fn [db _] (:active-movement db)))

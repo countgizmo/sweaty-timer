@@ -3,4 +3,5 @@
 (def default-db
   {:time nil
    :paused? true
-   :active-panel :setup-panel})
+   :active-panel :setup-panel
+   :movements []})
