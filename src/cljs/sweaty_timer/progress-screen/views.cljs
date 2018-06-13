@@ -6,11 +6,11 @@
 
 (defn clock []
   (let [time (re-frame/subscribe [::subs/time-diff-minutes])]
-    [:div @time]))
+    [:span @time]))
 
 (defn active-movement []
   (let [mov (re-frame/subscribe [::subs/active-movement])]
-    [:div#active-movement @mov]))
+    [:div#active-movement {:class "centered"} @mov]))
 
 (defn progress-bar []
   (let [p (re-frame/subscribe [::subs/time-diff-percentage])]
@@ -25,6 +25,6 @@
 (defn progress-panel []
   [:div
    [clock]
+   [exit]
    [active-movement]
-   [progress-bar]
-   [exit]])
+   [progress-bar]])
