@@ -32,3 +32,7 @@
 (re-frame/reg-sub
   ::active-movement
   (fn [db _] (:active-movement db)))
+
+(re-frame/reg-sub
+  ::current-min
+  (fn [db _] (:current-min db)))

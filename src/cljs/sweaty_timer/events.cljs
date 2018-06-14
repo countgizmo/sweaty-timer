@@ -5,7 +5,8 @@
             [clojure.string :as string]
             [sweaty-timer.time-util :refer [time-diff
                                             time-diff-str
-                                            seconds-between]]
+                                            seconds-between
+                                            percentage-left-current-min]]
             [sweaty-timer.movements-parser :refer [active-movement]]))
 
 (re-frame/reg-event-db
@@ -33,7 +34,8 @@
                  :diff (time-diff-str diff)
                  :paused? paused
                  :seconds-left s-left
-                 :active-movement (active-movement duration s-left movs))})))))
+                 :active-movement (active-movement duration s-left movs)
+                 :current-min (percentage-left-current-min duration s-left))})))))
 
 (re-frame/reg-event-db
   ::set-active-panel

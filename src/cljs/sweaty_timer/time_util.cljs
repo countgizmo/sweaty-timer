@@ -31,3 +31,14 @@
   (if (<= t1 t2)
     (time/in-seconds (time/interval t1 t2))
     0))
+
+(defn current-min-seconds
+  [total left]
+  (if (<= left 0)
+    0
+    (- 60 (mod (- total left) 60))))
+
+(defn percentage-left-current-min
+  [total left]
+  (let [s (current-min-seconds total left)]
+    (int (/ (* 100 s) 60))))

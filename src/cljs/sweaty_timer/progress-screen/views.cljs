@@ -12,10 +12,15 @@
   (let [mov (re-frame/subscribe [::subs/active-movement])]
     [:div#active-movement {:class "centered"} @mov]))
 
-(defn progress-bar []
+(defn progress-bar-total []
   (let [p (re-frame/subscribe [::subs/time-diff-percentage])]
-    [:div
+    [:div#progress-bar-total
      [:progress {:max 100 :value @p}]]))
+
+(defn progress-bar-current []
+  (let [t (re-frame/subscribe [::subs/current-min])]
+    [:div#progress-bar-current
+     [:progress {:max 100 :value @t}]]))
 
 (defn exit []
   [:button#exit-button
@@ -27,4 +32,5 @@
    [clock]
    [exit]
    [active-movement]
-   [progress-bar]])
+   [progress-bar-total]
+   [progress-bar-current]])

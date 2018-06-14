@@ -16,8 +16,16 @@ progress[value] {
   -webkit-appearance: none;
   appearance: none;
   position: absolute;
+}
+
+#progress-bar-total progress[value] {
   top: 300px;
-  left: -100px;
+  left: -150px;
+}
+
+#progress-bar-current progress[value] {
+  top: 300px;
+  left: -50px;
 }
 
 progress[value]::-webkit-progress-bar {
@@ -25,7 +33,16 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
+  border-radius: 2px;
+}
+
+#progress-bar-total progress[value]::-webkit-progress-value {
   background-color: #FF851B;
+  border-radius: 2px;
+}
+
+#progress-bar-current progress[value]::-webkit-progress-value {
+  background-color: #FFDC00;
   border-radius: 2px;
 }
 
