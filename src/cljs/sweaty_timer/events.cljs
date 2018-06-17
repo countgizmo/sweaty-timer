@@ -20,6 +20,10 @@
   (fn [coeffects _]
     (assoc coeffects :now (time/now))))
 
+(re-frame/reg-fx
+  :speak
+  (fn [what] (speak what)))
+
 (re-frame/reg-event-fx
   ::tick
   [(re-frame/inject-cofx :now)]
@@ -31,16 +35,16 @@
               s-left (seconds-between now end)
               duration (* 60 (get db :duration 0))
               movs (get db :movements [])
-              movement (active-movement duration s-left movs)]
-          (when (and
-                 (not paused?)
-                 (zero? (mod s-left 60)) (speak movement)))
-          {:db (assoc db
-                 :diff (time-diff-str diff)
-                 :paused? paused?
-                 :seconds-left s-left
-                 :active-movement movement
-                 :current-min (percentage-left-current-min duration s-left))})))))
+              movement (if paused? "Done!" (active-movement duration s-left movs))
+              say? (zero? (mod s-left 60))]
+          (merge
+            {:db (assoc db
+                   :diff (time-diff-str diff)
+                   :paused? paused?
+                   :seconds-left s-left
+                   :active-movement movement
+                   :current-min (percentage-left-current-min duration s-left))}
+            (when say? {:speak movement})))))))
 
 (re-frame/reg-event-db
   ::set-active-panel
@@ -52,11 +56,12 @@
   [(re-frame/inject-cofx :now)]
   (fn [{:keys [db now]} [_ duration movements]]
     (let [end (time/plus now (time/minutes (int duration)))
-          movements (string/split-lines movements)]
-      (speak (first movements))
+          movements (string/split-lines movements)
+          active-movement (first movements)]
       {:db (assoc db
              :end end
              :paused? false
              :duration duration
              :active-panel :progress-panel
-             :movements movements)})))
+             :movements movements)
+       :speak active-movement})))
