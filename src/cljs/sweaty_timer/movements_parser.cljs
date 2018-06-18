@@ -8,7 +8,8 @@
       movs - vector of movements"
   [total left movs]
   (if (or (empty? movs)
-          (<= left 0) "Rest")
+          (<= left 0))
+    "Done"
     (let [pos (/ (- total left) 60)
           pos (mod pos (count movs))]
       (get movs pos "Rest"))))

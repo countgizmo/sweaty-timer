@@ -35,7 +35,7 @@
               s-left (seconds-between now end)
               duration (* 60 (get db :duration 0))
               movs (get db :movements [])
-              movement (if paused? "Done!" (active-movement duration s-left movs))
+              movement (active-movement duration s-left movs)
               say? (zero? (mod s-left 60))]
           (merge
             {:db (assoc db
