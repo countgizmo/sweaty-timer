@@ -37,12 +37,12 @@ progress[value]::-webkit-progress-value {
 }
 
 #progress-bar-total progress[value]::-webkit-progress-value {
-  background-color: #FF851B;
+  background-color: #FFDC00;
   border-radius: 2px;
 }
 
 #progress-bar-current progress[value]::-webkit-progress-value {
-  background-color: #FFDC00;
+  background-color: #FF851B;
   border-radius: 2px;
 }
 
@@ -59,6 +59,7 @@ progress[value]::-webkit-progress-value {
 #active-movement {
   font-size: 100px;
   font-family: Helvetica;
+  text-transform: uppercase;
 }
 
 .centered {
