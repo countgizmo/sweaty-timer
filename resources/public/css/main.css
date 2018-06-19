@@ -69,3 +69,12 @@ progress[value]::-webkit-progress-value {
   margin-top: -50px;
   margin-left: -100px;
 }
+
+#exit-button {
+  background: #111111;
+  color: #FF851B;
+  border-color: #FF851B;
+  font-size: 18px;
+  padding: 5px 15px 5px 15px;
+  cursor: pointer;
+}

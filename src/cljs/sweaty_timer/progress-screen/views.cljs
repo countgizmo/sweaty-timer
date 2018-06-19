@@ -29,7 +29,6 @@
 
 (defn progress-panel []
   [:div
-   [clock]
    [exit]
    [active-movement]
    [progress-bar-total]
