@@ -24,7 +24,7 @@
 
 (defn exit []
   [:button#exit-button
-    {:on-click #(re-frame.core/dispatch [::events/set-active-panel :setup-panel])}
+    {:on-click #(re-frame.core/dispatch [::events/exit])}
     "Exit"])
 
 (defn progress-panel []

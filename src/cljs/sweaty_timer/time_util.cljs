@@ -24,7 +24,9 @@
 
 (defn time-left-percent
   [time total]
-  (int (/ (* 100 time) total)))
+  (if (nil? time)
+    100
+    (int (/ (* 100 time) total))))
 
 (defn seconds-between
   [t1 t2]

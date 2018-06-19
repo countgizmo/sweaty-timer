@@ -52,6 +52,12 @@
     (assoc db :active-panel value)))
 
 (re-frame/reg-event-fx
+  ::exit
+  (fn [{:keys [db]} _]
+    {:db db/default-db
+     :dispatch [::set-active-panel :setup-panel]}))
+
+(re-frame/reg-event-fx
   ::start
   [(re-frame/inject-cofx :now)]
   (fn [{:keys [db now]} [_ duration movements]]
