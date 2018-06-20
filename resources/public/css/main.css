@@ -84,14 +84,18 @@ progress[value]::-webkit-progress-value {
 #setup-form {
   font-size: 30px;
   position: absolute;
-  top: 50px;
+  top: 20px;
   left: 100px;
+}
+
+#setup-form h2 {
+  border-bottom: 1px solid #FFDC00;
 }
 
 input {
   background: #111111;
   color: #FF851B;
-  border-color: #FFFFFF;
+  border-color: #FFDC00;
   border-width: 1px;
   border-style: dotted;
   border-radius: 2px;
@@ -103,7 +107,7 @@ input {
 textarea {
   background: #111111;
   color: #FF851B;
-  border-color: #FFFFFF;
+  border-color: #FFDC00;
   border-width: 1px;
   border-style: dotted;
   border-radius: 2px;

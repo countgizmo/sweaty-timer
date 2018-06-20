@@ -16,6 +16,7 @@
         movements (reagent/atom @(re-frame/subscribe [::subs/movements]))]
     (fn []
       [:div#setup-form
+        [:h2 "EMOM"]
         [:span "Minutes"]
         [:input
          {:type :text
