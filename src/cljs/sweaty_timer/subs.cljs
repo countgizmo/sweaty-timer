@@ -1,7 +1,8 @@
 (ns sweaty-timer.subs
   (:require [re-frame.core :as re-frame]
             [sweaty-timer.time-util :refer [time-left-percent]]
-            [cljs-time.core :as time]))
+            [cljs-time.core :as time]
+            [clojure.string :as string]))
 
 (re-frame/reg-sub
   ::time
@@ -36,3 +37,9 @@
 (re-frame/reg-sub
   ::current-min
   (fn [db _] (:current-min db)))
+
+(re-frame/reg-sub
+  ::movements
+  (fn [db _]
+    (->> (:movements db)
+         (string/join \newline))))

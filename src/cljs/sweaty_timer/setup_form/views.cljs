@@ -7,21 +7,23 @@
 (defn start
   [duration movs]
   [:div
-   [:button#start-button
+   [:button.button
     {:on-click #(re-frame.core/dispatch [::events/start duration movs])}
     "Start!"]])
 
 (defn setup-panel []
   (let [time (reagent/atom "20")
-        movements (reagent/atom "")]
+        movements (reagent/atom @(re-frame/subscribe [::subs/movements]))]
     (fn []
-      [:div
-        [:span "Duration (min): "]
-        [:input {:type :text
-                 :value @time
-                 :on-change #(reset! time (-> % .-target .-value))}]
+      [:div#setup-form
+        [:span "Minutes"]
+        [:input
+         {:type :text
+          :value @time
+          :on-change #(reset! time (-> % .-target .-value))}]
         [:div#movements
          [:div "Movements"]
-         [:textarea {:value @movements
-                        :on-change #(reset! movements (-> % .-target .-value))}]]
+         [:textarea
+          {:value @movements
+           :on-change #(reset! movements (-> % .-target .-value))}]]
         [start @time @movements]])))

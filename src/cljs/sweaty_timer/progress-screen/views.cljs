@@ -23,7 +23,7 @@
      [:progress {:max 100 :value @t}]]))
 
 (defn exit []
-  [:button#exit-button
+  [:button.button
     {:on-click #(re-frame.core/dispatch [::events/exit])}
     "Exit"])
 

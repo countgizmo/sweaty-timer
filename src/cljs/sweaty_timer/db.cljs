@@ -4,5 +4,5 @@
   {:time nil
    :paused? true
    :active-panel :setup-panel
-   :movements []
+   :movements ["squats" "push-ups"]
    :current-min 100})
